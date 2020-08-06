@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/standard_margin"
+    android:paddingBottom="1dp"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ui.hygieneRating.HygieneRatingsFragment">
+
+    <TextView
+        android:id="@+id/ratingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/rating"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintEnd_toStartOf="@+id/percentageTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/percentageTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/percentage"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ratingTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/star5TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/star5"
+        app:layout_constraintEnd_toStartOf="@+id/percentage5TextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingTextView" />
+
+    <TextView
+        android:id="@+id/percentage5TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/percentage_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/star5TextView"
+        app:layout_constraintTop_toBottomOf="@+id/percentageTextView" />
+
+    <TextView
+        android:id="@+id/star4TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/star4"
+        app:layout_constraintEnd_toStartOf="@+id/percentage4TextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/star5TextView" />
+
+    <TextView
+        android:id="@+id/percentage4TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/percentage_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/star4TextView"
+        app:layout_constraintTop_toBottomOf="@+id/percentage5TextView" />
+
+    <TextView
+        android:id="@+id/star3TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/star3"
+        app:layout_constraintEnd_toStartOf="@+id/percentage3TextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/star4TextView" />
+
+    <TextView
+        android:id="@+id/percentage3TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/percentage_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/star3TextView"
+        app:layout_constraintTop_toBottomOf="@+id/percentage4TextView" />
+
+    <TextView
+        android:id="@+id/star2TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/star2"
+        app:layout_constraintEnd_toStartOf="@+id/percentage2TextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/star3TextView" />
+
+    <TextView
+        android:id="@+id/percentage2TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/percentage_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/star2TextView"
+        app:layout_constraintTop_toBottomOf="@+id/percentage3TextView" />
+
+    <TextView
+        android:id="@+id/star1TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/star1"
+        app:layout_constraintEnd_toStartOf="@+id/percentage1TextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/star2TextView" />
+
+    <TextView
+        android:id="@+id/percentage1TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/percentage_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/star1TextView"
+        app:layout_constraintTop_toBottomOf="@+id/percentage2TextView" />
+
+    <TextView
+        android:id="@+id/starExemptTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/exempt"
+        app:layout_constraintEnd_toStartOf="@+id/percentageExemptTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/star1TextView" />
+
+    <TextView
+        android:id="@+id/percentageExemptTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="#FFF"
+        android:text="@string/percentage_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/starExemptTextView"
+        app:layout_constraintTop_toBottomOf="@+id/percentage1TextView" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

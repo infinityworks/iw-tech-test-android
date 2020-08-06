@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Food Standards Ratings</string>
+    <string name="rating">Rating</string>
+    <string name="percentage">Percentage</string>
+    <string name="star5">5-star</string>
+    <string name="star4">4-star</string>
+    <string name="star3">3-star</string>
+    <string name="star2">2-star</string>
+    <string name="star1">1-star</string>
+    <string name="exempt">Exempt</string>
+    <string name="percentage_value">%1$.1f%%</string>
+    <string name="no_star_ratings_for_establishments">No star ratings for establishments</string>
+</resources>
