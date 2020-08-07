@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aaron.infinity_foodstandards.ui.AuthorityListener
 import com.aaron.infinity_foodstandards.ui.authorities.AuthoritiesFragment
-
+import com.aaron.infinity_foodstandards.ui.hygieneRating.HygieneRatingsFragment
 
 class MainActivity : AppCompatActivity(), AuthorityListener {
 
@@ -19,14 +19,17 @@ class MainActivity : AppCompatActivity(), AuthorityListener {
     }
 
     override fun onAuthorityClick(authorityId: Int) {
-        //TODO Pass the authority ID to the ratings fragment
-//        val args = Bundle()
-//        args.putInt("AuthorityId", authorityId)
-//
-//        val transaction = supportFragmentManager.beginTransaction().apply {
-//            addToBackStack("Ratings")
-//        }
-//
-//        transaction.commit()
+        //Pass the authority ID to the ratings fragment
+        val ratings = HygieneRatingsFragment()
+        val args = Bundle()
+        args.putInt("AuthorityId", authorityId)
+        ratings.arguments = args
+
+        val transaction = supportFragmentManager.beginTransaction().apply {
+            replace(R.id.container, ratings)
+            addToBackStack("Ratings")
+        }
+
+        transaction.commit()
     }
 }
