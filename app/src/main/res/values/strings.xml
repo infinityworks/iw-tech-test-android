@@ -8,6 +8,6 @@
     <string name="star2">2-star</string>
     <string name="star1">1-star</string>
     <string name="exempt">Exempt</string>
-    <string name="percentage_value">%1$.1f%%</string>
+    <string name="percentage_value">16.6%</string>
     <string name="no_star_ratings_for_establishments">No star ratings for establishments</string>
 </resources>
