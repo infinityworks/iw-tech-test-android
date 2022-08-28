@@ -11,12 +11,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aaron.infinity_foodstandards.R
+import com.aaron.infinity_foodstandards.databinding.AuthoritiesFragmentBinding
 import com.aaron.infinity_foodstandards.model.LocalAuthoritiesResponse
 import com.aaron.infinity_foodstandards.model.LocalAuthority
 import com.aaron.infinity_foodstandards.ui.AuthorityListener
-import kotlinx.android.synthetic.main.authorities_fragment.*
 
 class AuthoritiesFragment : Fragment(), Observer<LocalAuthoritiesResponse> {
+
+    private var _binding: AuthoritiesFragmentBinding? = null
+    private val binding get() = requireNotNull(_binding) {
+        "Authorities fragment UI accessed after onDestroyView"
+    }
 
     private lateinit var viewModel: AuthoritiesViewModel
     private lateinit var localAuthorities: List<LocalAuthority>
@@ -29,7 +34,8 @@ class AuthoritiesFragment : Fragment(), Observer<LocalAuthoritiesResponse> {
         savedInstanceState: Bundle?
     ): View {
         viewModel = ViewModelProvider(this).get(AuthoritiesViewModel::class.java)
-        return inflater.inflate(R.layout.authorities_fragment, container, false)
+        _binding = AuthoritiesFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,20 +81,25 @@ class AuthoritiesFragment : Fragment(), Observer<LocalAuthoritiesResponse> {
         //Assign list from observer to the recycler view adapter
         localAuthorities = authoritiesResponse.authorities
 
-        authoritiesRecycleView.layoutManager =
+        binding.authoritiesRecycleView.layoutManager =
             LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         adapter =
             AuthorisesAdapter(
                 localAuthorities
             )
-        authoritiesRecycleView.adapter = adapter
+        binding.authoritiesRecycleView.adapter = adapter
 
         //Use the on click listener to listen for on click events
-        authoritiesRecycleView.addOnItemClickListener(object : OnItemClickListener {
+        binding.authoritiesRecycleView.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
                 listener?.onAuthorityClick(localAuthorities[position].id)
             }
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

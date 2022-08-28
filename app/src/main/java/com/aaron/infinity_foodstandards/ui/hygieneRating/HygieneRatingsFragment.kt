@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.aaron.infinity_foodstandards.R
 import com.aaron.infinity_foodstandards.model.Establishment
 import com.aaron.infinity_foodstandards.model.EstablishmentResponse
-import kotlinx.android.synthetic.main.hygiene_ratings_fragment.*
-
 
 class HygieneRatingsFragment : Fragment() {
 
@@ -26,6 +24,7 @@ class HygieneRatingsFragment : Fragment() {
         return inflater.inflate(R.layout.hygiene_ratings_fragment, container, false)
     }
 
+    @Deprecated("Use {@link #onViewCreated(View, Bundle)}")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HygieneRatingsViewModel::class.java)
