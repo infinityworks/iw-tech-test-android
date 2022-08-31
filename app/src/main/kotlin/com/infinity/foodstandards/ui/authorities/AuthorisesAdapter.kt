@@ -5,24 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.infinity.foodstandards.R
 import com.infinity.foodstandards.databinding.LocalAuthorityItemBinding
 import com.infinity.foodstandards.model.LocalAuthority
 
 class AuthorisesAdapter(
-    private val onItemSelected: (LocalAuthority) -> Unit
-) : RecyclerView.Adapter<AuthorisesAdapter.ItemViewHolder>() {
+    private val onItemSelected: (LocalAuthority) -> Unit,
+    diffUtil: DiffUtil.ItemCallback<LocalAuthority> = LocalAuthorityDiffUtil()
+) : ListAdapter<LocalAuthority, AuthorisesAdapter.ItemViewHolder>(diffUtil) {
 
     private val authorityList = mutableListOf<LocalAuthority>()
-
-    // Update and reload the data displayed on the RecyclerView
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateData(authorities: List<LocalAuthority>) {
-        authorityList.clear()
-        authorityList.addAll(authorities)
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val binding = LocalAuthorityItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -45,4 +40,12 @@ class AuthorisesAdapter(
             itemView.setOnClickListener { onItemSelected(authority) }
         }
     }
+}
+
+class LocalAuthorityDiffUtil : DiffUtil.ItemCallback<LocalAuthority>() {
+    override fun areItemsTheSame(oldItem: LocalAuthority, newItem: LocalAuthority): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: LocalAuthority, newItem: LocalAuthority): Boolean =
+        oldItem == newItem
 }

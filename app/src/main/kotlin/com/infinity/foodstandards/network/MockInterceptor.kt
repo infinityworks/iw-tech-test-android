@@ -14,9 +14,6 @@ class MockInterceptor : Interceptor {
         if (BuildConfig.DEBUG) {
             val uri = chain.request().url().uri().toString()
 
-            val authority1 = LocalAuthority()
-            authority1.name = "test"
-
             val responseString = when {
                 uri.endsWith("authorities") -> getLocalAuthoritiesJson
                 uri.endsWith("Establishments?localAuthorityId=48") -> getEstablishmentJson

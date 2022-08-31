@@ -27,35 +27,6 @@ class FoodStandardsRepo(
         }
     }
 
-    // Get list of establishments from API
-    fun getEstablishments(id: Int): MutableLiveData<EstablishmentResponse> {
-        val apiData: MutableLiveData<EstablishmentResponse> = MutableLiveData()
-
-        val establishmentResponse = EstablishmentResponse()
-        val establishment1 = Establishment("fhrs_5_en-gb")
-        val establishment2 = Establishment("fhrs_4_en-gb")
-        val establishment3 = Establishment("fhrs_3_en-gb")
-        val establishment4 = Establishment("fhrs_2_en-gb")
-        val establishment5 = Establishment("fhrs_1_en-gb")
-        val establishment6 = Establishment("fhrs_exempt_en-gb")
-
-        if(Random.nextBoolean()) {
-            establishmentResponse.establishments = listOf(
-                establishment2,
-                establishment3,
-                establishment4,
-                establishment5
-            )
-        } else {
-            establishmentResponse.establishments = listOf(
-                establishment1,
-                establishment6)
-        }
-        apiData.value = establishmentResponse
-
-        return apiData
-    }
-
     companion object {
         private const val TAG = "REPO"
     }

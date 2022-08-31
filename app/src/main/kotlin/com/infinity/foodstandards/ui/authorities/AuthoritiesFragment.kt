@@ -38,9 +38,9 @@ class AuthoritiesFragment : Fragment(), Observer<LocalAuthoritiesResponse> {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLocalAuthorities().observe(viewLifecycleOwner, this)
 
-        adapter = AuthorisesAdapter {
+        adapter = AuthorisesAdapter ({
             findNavController().navigate(R.id.action_authoritiesFragment_to_hygieneRatingsFragment)
-        }
+        })
         binding.authoritiesRecycleView.adapter = adapter
     }
 
@@ -49,7 +49,7 @@ class AuthoritiesFragment : Fragment(), Observer<LocalAuthoritiesResponse> {
             return
         }
         localAuthorities = authoritiesResponse.authorities
-        adapter.updateData(localAuthorities)
+        adapter.submitList(localAuthorities)
     }
 
     override fun onDestroyView() {
