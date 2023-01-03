@@ -1,14 +1,10 @@
 package com.infinity.foodstandards.ui.authorities
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.infinity.foodstandards.R
 import com.infinity.foodstandards.databinding.LocalAuthorityItemBinding
 import com.infinity.foodstandards.model.LocalAuthority
 
@@ -17,18 +13,15 @@ class AuthorisesAdapter(
     diffUtil: DiffUtil.ItemCallback<LocalAuthority> = LocalAuthorityDiffUtil()
 ) : ListAdapter<LocalAuthority, AuthorisesAdapter.ItemViewHolder>(diffUtil) {
 
-    private val authorityList = mutableListOf<LocalAuthority>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val binding = LocalAuthorityItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            LocalAuthorityItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemViewHolder(binding, onItemSelected)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bindItems(authorityList[position])
+        holder.bindItems(getItem(position))
     }
-
-    override fun getItemCount() = authorityList.size
 
     class ItemViewHolder(
         private val binding: LocalAuthorityItemBinding,
