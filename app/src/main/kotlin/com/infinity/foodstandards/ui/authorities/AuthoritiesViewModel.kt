@@ -16,7 +16,7 @@ class AuthoritiesViewModel() : ViewModel() {
     private var foodStandardsRepo: FoodStandardsRepo =
         FoodStandardsRepo(RetrofitService.createService())
 
-    public val localAuthorities = MutableLiveData<LocalAuthoritiesResponse>()
+    private val localAuthorities = MutableLiveData<LocalAuthoritiesResponse>()
 
     ///Get local authorities live data
     fun getLocalAuthorities(): LiveData<LocalAuthoritiesResponse> {

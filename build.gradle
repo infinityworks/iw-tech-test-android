@@ -1,7 +1,6 @@
 buildscript {
     ext.gradleDir = "$projectDir/gradle"
-    ext.kotlin_version = '1.7.20'
-    ext.composeVersion = '1.3.2'
+    ext.kotlin_version = '1.7.10'
     repositories {
         google()
         mavenCentral()
