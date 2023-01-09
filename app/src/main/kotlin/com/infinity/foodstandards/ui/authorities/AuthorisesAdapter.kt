@@ -32,12 +32,12 @@ class AuthorisesAdapter(
         fun bindItems(authority: LocalAuthority) {
             // Set title and click listener
 //            binding.authorityNameTextView.text = authority.name
-            itemView.setOnClickListener { onItemSelected(authority) }
-            composeView.setContent {
-                MaterialTheme {
-                    AuthorityList(authority)
-                }
-            }
+//            itemView.setOnClickListener { onItemSelected(authority) }
+//            composeView.setContent {
+//                MaterialTheme {
+//                    AuthorityList(authority)
+//                }
+//            }
         }
     }
 }
