@@ -20,7 +20,7 @@ import com.infinity.foodstandards.R
 import com.infinity.foodstandards.model.LocalAuthority
 
 @Composable
-fun AuthorityDetailDescription(authority: LocalAuthority) {
+fun AuthorityList(authority: LocalAuthority) {
     AuthorityName(authority.name)
 }
 
