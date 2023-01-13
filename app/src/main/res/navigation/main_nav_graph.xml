@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
     app:startDestination="@id/authoritiesFragment">
 
     <fragment
         android:id="@+id/authoritiesFragment"
         android:name="com.infinity.foodstandards.ui.authorities.AuthoritiesFragment"
-        android:label="authorities_fragment"
-        tools:layout="@layout/authorities_fragment" >
+        android:label="authorities_fragment" >
         <action
             android:id="@+id/action_authoritiesFragment_to_hygieneRatingsFragment"
             app:destination="@id/hygieneRatingsFragment" />
@@ -18,7 +16,6 @@
     <fragment
         android:id="@+id/hygieneRatingsFragment"
         android:name="com.infinity.foodstandards.ui.hygieneRating.HygieneRatingsFragment"
-        android:label="hygiene_ratings_fragment"
-        tools:layout="@layout/hygiene_ratings_fragment" />
+        android:label="hygiene_ratings_fragment" />
 
 </navigation>

@@ -14,7 +14,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.infinity.foodstandards.R
 import com.infinity.foodstandards.model.Establishment
-import com.infinity.foodstandards.model.LocalAuthority
 
 @Composable
 fun AuthorityDetailDescription() {
