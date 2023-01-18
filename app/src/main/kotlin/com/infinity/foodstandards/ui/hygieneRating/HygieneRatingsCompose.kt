@@ -17,13 +17,15 @@ import com.infinity.foodstandards.model.Establishment
 
 @Composable
 fun AuthorityDetailDescription() {
-    AuthorityName()
+    val ratings = listOf("16.6%","16.6%","16.6%","16.6%","16.6%","16.6%")
+    RatingTable(ratings)
 }
 
 @Preview
 @Composable
-fun AuthorityNamePreview() {
-    AuthorityName()
+fun RatingTablePreview() {
+    val ratings = listOf("16.6%","16.6%","16.6%","16.6%","16.6%","16.6%")
+    RatingTable(ratings)
 }
 
 @Composable
@@ -41,7 +43,7 @@ fun RowScope.TableCell(
 }
 
 @Composable
-private fun AuthorityName() {
+private fun RatingTable(ratings: List<String>) {
     val personList = listOf(
         Establishment(stringResource(R.string.star5)),
         Establishment(stringResource(R.string.star4)),
@@ -51,7 +53,7 @@ private fun AuthorityName() {
         Establishment(stringResource(R.string.exempt)),
     )
     val tableData = personList.mapIndexed { index, item ->
-        "${item.rating}" to "16.6%"
+        "${item.rating}" to ratings[index]
     }
     // Each cell of a column must have the same weight.
     val column1Weight = .5f // 50%

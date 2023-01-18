@@ -16,10 +16,6 @@ class AuthoritiesViewModel() : ViewModel() {
 
      val localAuthorities = MutableLiveData<LocalAuthoritiesResponse>()
 
-    init {
-        getLocalAuthorities()
-    }
-
     ///Get local authorities live data
     fun getLocalAuthorities(): LiveData<LocalAuthoritiesResponse> {
         viewModelScope.launch {

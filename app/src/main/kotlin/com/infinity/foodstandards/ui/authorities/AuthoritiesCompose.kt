@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +31,7 @@ fun AuthorityList(authority: List<LocalAuthority>, onItemSelected: () -> Unit) {
     LazyColumn {
         items(authority) { authority ->
             AuthorityName(authority.name, { onItemSelected() })
+            Divider(color = Color.Gray)
         }
     }
 }
@@ -44,15 +46,5 @@ private fun AuthorityName(name: String, onItemSelected: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(dimensionResource(R.dimen.standard_margin))
-            .drawBehind {
-                val strokeWidth = 1 * density
-                val y = size.height - strokeWidth / 2 + 8
-                drawLine(
-                    Color.Gray,
-                    Offset(0f, y),
-                    Offset(size.width, y),
-                    strokeWidth
-                )
-            }
     )
 }

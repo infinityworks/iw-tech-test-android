@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
@@ -31,6 +32,9 @@ class AuthoritiesFragment : Fragment() {
                 ViewCompositionStrategy.DisposeOnLifecycleDestroyed(viewLifecycleOwner)
             )
             setContent {
+                LaunchedEffect(Unit) { // Use unit as we just want this as a one time call
+                    viewModel.getLocalAuthorities()
+                }
                 val apiResponse = viewModel.localAuthorities.observeAsState().value
                 if (apiResponse != null) {
                     localAuthorities = apiResponse.authorities
