@@ -1,7 +1,11 @@
 package com.infinity.foodstandards.network
 
 import com.infinity.foodstandards.BuildConfig
-import okhttp3.*
+import okhttp3.Interceptor
+import okhttp3.MediaType
+import okhttp3.Protocol
+import okhttp3.Response
+import okhttp3.ResponseBody
 
 /**
  * This will help us to test our networking code while a particular API is not implemented
