@@ -15,16 +15,10 @@ import androidx.compose.ui.unit.dp
 import com.infinity.foodstandards.R
 import com.infinity.foodstandards.model.Establishment
 
-@Composable
-fun AuthorityDetailDescription() {
-    val ratings = listOf("16.6%","16.6%","16.6%","16.6%","16.6%","16.6%")
-    RatingTable(ratings)
-}
-
 @Preview
 @Composable
 fun RatingTablePreview() {
-    val ratings = listOf("16.6%","16.6%","16.6%","16.6%","16.6%","16.6%")
+    val ratings = listOf("16.6%", "16.6%", "16.6%", "16.6%", "16.6%", "16.6%")
     RatingTable(ratings)
 }
 
@@ -43,14 +37,14 @@ fun RowScope.TableCell(
 }
 
 @Composable
-private fun RatingTable(ratings: List<String>) {
+fun RatingTable(ratings: List<String>) {
     val personList = listOf(
         Establishment(stringResource(R.string.star5)),
         Establishment(stringResource(R.string.star4)),
         Establishment(stringResource(R.string.star3)),
         Establishment(stringResource(R.string.star2)),
         Establishment(stringResource(R.string.star1)),
-        Establishment(stringResource(R.string.exempt)),
+        Establishment(stringResource(R.string.exempt))
     )
     val tableData = personList.mapIndexed { index, item ->
         "${item.rating}" to ratings[index]
@@ -62,7 +56,8 @@ private fun RatingTable(ratings: List<String>) {
     LazyColumn(
         Modifier
             .fillMaxSize()
-            .padding(16.dp)) {
+            .padding(16.dp)
+    ) {
         // Here is the header
         item {
             Row(Modifier.background(Color.Gray)) {

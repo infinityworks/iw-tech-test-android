@@ -9,14 +9,14 @@ import com.infinity.foodstandards.network.FoodStandardsRepo
 import com.infinity.foodstandards.network.RetrofitService
 import kotlinx.coroutines.launch
 
-class AuthoritiesViewModel() : ViewModel() {
+class AuthoritiesViewModel : ViewModel() {
 
     private var foodStandardsRepo: FoodStandardsRepo =
         FoodStandardsRepo(RetrofitService.createService())
 
-     val localAuthorities = MutableLiveData<LocalAuthoritiesResponse>()
+    val localAuthorities = MutableLiveData<LocalAuthoritiesResponse>()
 
-    ///Get local authorities live data
+    // /Get local authorities live data
     fun getLocalAuthorities(): LiveData<LocalAuthoritiesResponse> {
         viewModelScope.launch {
             val result = foodStandardsRepo.getLocalAuthorities().getOrNull()

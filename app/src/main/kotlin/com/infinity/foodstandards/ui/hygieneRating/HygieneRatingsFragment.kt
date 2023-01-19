@@ -23,11 +23,10 @@ class HygieneRatingsFragment : Fragment() {
             )
             setContent {
                 MaterialTheme {
-                    AuthorityDetailDescription()
+                    val ratings = listOf("16.6%", "16.6%", "16.6%", "16.6%", "16.6%", "16.6%")
+                    RatingTable(ratings)
                 }
-
             }
         }
     }
-
 }

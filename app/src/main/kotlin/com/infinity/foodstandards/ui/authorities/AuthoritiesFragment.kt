@@ -44,7 +44,6 @@ class AuthoritiesFragment : Fragment() {
                         findNavController().navigate(R.id.action_authoritiesFragment_to_hygieneRatingsFragment)
                     }
                 }
-
             }
         }
     }
