@@ -1,16 +1,10 @@
 package com.infinity.foodstandards.network
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.infinity.foodstandards.model.Establishment
-import com.infinity.foodstandards.model.EstablishmentResponse
 import com.infinity.foodstandards.model.LocalAuthoritiesResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Response
-import kotlin.random.Random
 
 class FoodStandardsRepo(
     private var api: FoodStandardsApi,

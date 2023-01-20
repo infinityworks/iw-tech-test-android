@@ -11,7 +11,7 @@ class RetrofitService {
         fun createService(): FoodStandardsApi {
             val client = OkHttpClient().newBuilder()
 
-            //Just use the interceptor in debug config
+            // Just use the interceptor in debug config
             if (BuildConfig.MOCK) {
                 client.interceptors().add(MockInterceptor())
             }

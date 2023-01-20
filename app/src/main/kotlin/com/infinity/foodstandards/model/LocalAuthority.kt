@@ -3,7 +3,7 @@ package com.infinity.foodstandards.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class LocalAuthority (
+data class LocalAuthority(
     @SerializedName("Name")
     @Expose
     var name: String,

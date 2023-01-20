@@ -1,12 +1,10 @@
 package com.infinity.foodstandards
 
-
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
@@ -49,7 +47,8 @@ class RatingsFragmentTest {
 
         val textView = onView(
             allOf(
-                withId(R.id.percentage5TextView), withText("28.6%"),
+                withId(R.id.percentage5TextView),
+                withText("28.6%"),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.container),
@@ -64,7 +63,8 @@ class RatingsFragmentTest {
 
         val textView2 = onView(
             allOf(
-                withId(R.id.percentage4TextView), withText("14.3%"),
+                withId(R.id.percentage4TextView),
+                withText("14.3%"),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.container),
@@ -79,7 +79,8 @@ class RatingsFragmentTest {
 
         val textView3 = onView(
             allOf(
-                withId(R.id.percentage3TextView), withText("14.3%"),
+                withId(R.id.percentage3TextView),
+                withText("14.3%"),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.container),
@@ -94,7 +95,8 @@ class RatingsFragmentTest {
 
         val textView4 = onView(
             allOf(
-                withId(R.id.percentage2TextView), withText("14.3%"),
+                withId(R.id.percentage2TextView),
+                withText("14.3%"),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.container),
@@ -109,7 +111,8 @@ class RatingsFragmentTest {
 
         val textView5 = onView(
             allOf(
-                withId(R.id.percentage1TextView), withText("14.3%"),
+                withId(R.id.percentage1TextView),
+                withText("14.3%"),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.container),
@@ -124,7 +127,8 @@ class RatingsFragmentTest {
 
         val textView6 = onView(
             allOf(
-                withId(R.id.percentageExemptTextView), withText("14.3%"),
+                withId(R.id.percentageExemptTextView),
+                withText("14.3%"),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.container),
@@ -139,9 +143,9 @@ class RatingsFragmentTest {
     }
 
     private fun childAtPosition(
-        parentMatcher: Matcher<View>, position: Int
+        parentMatcher: Matcher<View>,
+        position: Int
     ): Matcher<View> {
-
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
                 description.appendText("Child at position $position in parent ")
@@ -150,8 +154,8 @@ class RatingsFragmentTest {
 
             public override fun matchesSafely(view: View): Boolean {
                 val parent = view.parent
-                return parent is ViewGroup && parentMatcher.matches(parent)
-                        && view == parent.getChildAt(position)
+                return parent is ViewGroup && parentMatcher.matches(parent) &&
+                    view == parent.getChildAt(position)
             }
         }
     }

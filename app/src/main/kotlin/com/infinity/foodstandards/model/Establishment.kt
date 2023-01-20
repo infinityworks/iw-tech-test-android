@@ -10,9 +10,8 @@ data class Establishment(
     @SerializedName("RatingKey")
     @Expose
     var rating: String
-): Parcelable
+) : Parcelable
 
 class EstablishmentResponse {
     lateinit var establishments: List<Establishment>
 }
-

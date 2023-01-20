@@ -1,6 +1,6 @@
 package com.infinity.foodstandards.ui.hygieneRating
 
-//import androidx.test.ext.junit.runners.AndroidJUnit4
+// import androidx.test.ext.junit.runners.AndroidJUnit4
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
@@ -21,7 +21,7 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 
-//import org.junit.runner.RunWith
+// import org.junit.runner.RunWith
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class AuthoritiesViewModelTest {
