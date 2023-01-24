@@ -6,13 +6,17 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class FoodStandardsRepo(
+interface FoodStandardsRepo {
+    suspend fun getLocalAuthorities(): Result<LocalAuthoritiesResponse>
+}
+
+class FoodStandardsRepository(
     private var api: FoodStandardsApi,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) {
+) : FoodStandardsRepo {
 
     // Get list of authorities from food standards API
-    suspend fun getLocalAuthorities(): Result<LocalAuthoritiesResponse> = withContext(dispatcher) {
+    override suspend fun getLocalAuthorities(): Result<LocalAuthoritiesResponse> = withContext(dispatcher) {
         try {
             Result.success(api.getAuthorities())
         } catch (exception: Exception) {

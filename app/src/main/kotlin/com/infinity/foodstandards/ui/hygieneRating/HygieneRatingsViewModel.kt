@@ -5,12 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.infinity.foodstandards.model.EstablishmentResponse
 import com.infinity.foodstandards.network.FoodStandardsRepo
+import com.infinity.foodstandards.network.FoodStandardsRepository
 import com.infinity.foodstandards.network.RetrofitService
 
-class HygieneRatingsViewModel : ViewModel() {
-
-    private var foodStandardsRepo: FoodStandardsRepo =
-        FoodStandardsRepo(RetrofitService.createService())
+class HygieneRatingsViewModel(
+    private val foodStandardsRepo: FoodStandardsRepo = FoodStandardsRepository(RetrofitService.createService())
+) : ViewModel() {
 
     fun getAllEstablishments(id: Int): LiveData<EstablishmentResponse> {
         return MutableLiveData()
