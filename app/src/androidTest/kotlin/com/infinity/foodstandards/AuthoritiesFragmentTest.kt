@@ -2,6 +2,13 @@ package com.infinity.foodstandards
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.MaterialTheme
+import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import androidx.navigation.fragment.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -10,6 +17,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
+import com.infinity.foodstandards.model.LocalAuthority
+import com.infinity.foodstandards.ui.authorities.AuthorityList
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -17,65 +26,44 @@ import org.hamcrest.TypeSafeMatcher
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito
 
-@LargeTest
-@RunWith(AndroidJUnit4::class)
 class AuthoritiesFragmentTest {
 
-    @Rule
-    @JvmField
-    var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
+    private val city1 = "Aberdeen City"
+    private val city2 = "Amber Valley"
+    private val localAuthorities = listOf(
+        LocalAuthority(city1, 1),
+        LocalAuthority(city2, 2)
+    )
+
+    @get:Rule
+    val composeTestRule = createComposeRule()
 
     @Test
-    fun authoritiesFragmentTest() {
-        val textView = onView(
-            allOf(
-                withId(R.id.authorityNameTextView),
-                withText("Aberdeen City"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.authoritiesRecycleView),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        textView.check(matches(withText("Aberdeen City")))
-
-        val textView2 = onView(
-            allOf(
-                withId(R.id.authorityNameTextView),
-                withText("Amber Valley"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.authoritiesRecycleView),
-                        1
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        textView2.check(matches(withText("Amber Valley")))
-    }
-
-    private fun childAtPosition(
-        parentMatcher: Matcher<View>,
-        position: Int
-    ): Matcher<View> {
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description) {
-                description.appendText("Child at position $position in parent ")
-                parentMatcher.describeTo(description)
-            }
-
-            public override fun matchesSafely(view: View): Boolean {
-                val parent = view.parent
-                return parent is ViewGroup && parentMatcher.matches(parent) &&
-                    view == parent.getChildAt(position)
+    fun givenDisplayingListWhenDataPopulatedThenCityShows() {
+        composeTestRule.setContent {
+            MaterialTheme {
+                AuthorityList(localAuthorities) {
+                }
             }
         }
+        composeTestRule.onNodeWithText(city1).assertIsDisplayed()
+        composeTestRule.onNodeWithText(city2).assertIsDisplayed()
     }
+
+    @Test
+    fun givenDisplayingListWhenItemClickedThenCallbackInvoked() {
+        val callbackOnClick: () -> Unit = Mockito.mock(OnClickCallback::class.java)
+        composeTestRule.setContent {
+            MaterialTheme {
+                AuthorityList(localAuthorities, callbackOnClick)
+            }
+        }
+        composeTestRule.onNodeWithText(city1).performClick()
+        val verifyCallback = Mockito.verify(callbackOnClick, Mockito.times(1))
+        verifyCallback()
+    }
+    interface OnClickCallback: () -> Unit
+//    inline fun <reified T> mock(): T = Mockito.mock(T::class.java)
 }
