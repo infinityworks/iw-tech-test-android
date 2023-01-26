@@ -38,13 +38,13 @@ class AuthoritiesComposeTest {
 
     @Test
     fun givenDisplayingList_whenItemClicked_thenCallbackInvoked() {
-        val callbackOnClick: (String) -> Unit = mock()
+        val callbackOnClick: () -> Unit = mock()
         composeTestRule.setContent {
             MaterialTheme {
                 AuthorityList(localAuthorities, callbackOnClick)
             }
         }
         composeTestRule.onNodeWithText(city1).performClick()
-        verify(callbackOnClick, times(1)).invoke("1")
+        verify(callbackOnClick, times(1)).invoke()
     }
 }

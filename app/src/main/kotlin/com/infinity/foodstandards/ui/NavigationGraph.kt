@@ -27,9 +27,9 @@ internal fun NavGraph(
     ) {
         composable(Routes.Authorities.path()) {
             val authoritiesViewModel = ViewModelProvider(viewModelStoreOwner)[AuthoritiesViewModel::class.java]
-            AuthoritiesScreen(viewModel = authoritiesViewModel) { authorityId ->
+            AuthoritiesScreen(viewModel = authoritiesViewModel) {
                 navController.navigate(
-                    Routes.HygieneRatings.withArgs(authorityId)
+                    Routes.HygieneRatings.path()
                 )
             }
         }
@@ -40,9 +40,7 @@ internal fun NavGraph(
             val hygieneRatingsViewModel = ViewModelProvider(viewModelStoreOwner)[HygieneRatingsViewModel::class.java]
             HygieneRatingsScreen(
                 viewModel = hygieneRatingsViewModel,
-                it.arguments?.getString(
-                    Routes.HygieneRatings.authorityId
-                )
+                localAuthorityId = "0"
             )
         }
     }
@@ -55,6 +53,7 @@ sealed class Routes(private val route: String) {
         const val authorityId: String = "authorityId"
     }
 
+    // Creates a route with arguments for actual navigation
     fun withArgs(vararg args: String) = buildString {
         append(route)
         args.forEach { arg ->
@@ -62,6 +61,7 @@ sealed class Routes(private val route: String) {
         }
     }
 
+    // Creates a path with argument names for the NavGraphBuilder
     fun path(vararg args: String) = buildString {
         append(route)
         args.forEach { arg ->

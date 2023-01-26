@@ -27,7 +27,7 @@ import com.infinity.foodstandards.model.LocalAuthority
 @Composable
 fun AuthoritiesScreen(
     viewModel: AuthoritiesViewModel,
-    onNavigateToHygieneRatings: (authorityId: String) -> Unit
+    onNavigateToHygieneRatings: () -> Unit
 ) {
     LaunchedEffect(Unit) {
         viewModel.getLocalAuthorities()
@@ -37,7 +37,7 @@ fun AuthoritiesScreen(
 
     when {
         localAuthorities != null -> AuthorityList(authority = localAuthorities) {
-            onNavigateToHygieneRatings(it)
+            onNavigateToHygieneRatings()
         }
         errorState == true -> TextPlaceholder(text = stringResource(R.string.default_error))
         else -> TextPlaceholder(text = stringResource(R.string.loading))
@@ -47,11 +47,11 @@ fun AuthoritiesScreen(
 @Composable
 fun AuthorityList(
     authority: List<LocalAuthority>,
-    onItemSelected: (authorityId: String) -> Unit
+    onItemSelected: () -> Unit
 ) {
     LazyColumn {
         items(authority) { authority ->
-            AuthorityName(authority.name) { onItemSelected(authority.id.toString()) }
+            AuthorityName(authority.name) { onItemSelected() }
             Divider(color = Color.Gray)
         }
     }
